@@ -5,7 +5,7 @@ This repostory uses [renv](https://rstudio.github.io/renv/articles/renv.html) to
 renv::restore()
 ```
 
-We use targets to ensure that the data analysis pipeline is reproducible. To rerun our analyses, run the following:
+We use [targets](https://books.ropensci.org/targets/) to ensure that the data analysis pipeline is reproducible. To rerun our analyses, run the following:
 
 ```r
 targets::tar_make()
