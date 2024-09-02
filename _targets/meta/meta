@@ -1,0 +1,6 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+get_colombia_covid_large_data|function|8e377ba73f1a9f1a|||||||||||||||
+.Random.seed|object|a64850df117e3d20|||||||||||||||
+df_covid_large|stem||46ab35c7ce35d360|8af1a257125b24e4|-560810544||t19968.6413724619s||0|rds|local|vector|||0.771||could not find function fread
+get_colombia_covid_large_data|function|8e377ba73f1a9f1a
+.Random.seed|object|0ac8440b1d92cf4e
