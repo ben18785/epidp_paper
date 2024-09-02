@@ -1,4 +1,13 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|48e3d5f7c447bc85|||||||||||||||
-df_covid_large|stem|a75839ad7be3afa3|fca6e1cda008a692|2c530c1562a7fbd1|-560810544|data/raw/covid19_col_updated_individual.csv|t19968.6620182121s|b011ce94aa4930d8|80984155|file|local|vector|||0.182||
+.Random.seed|object|4b168ea4cba9d534|||||||||||||||
+create_case_incidence|function|87792e4c9cd40b9b|||||||||||||||
+create_death_incidence|function|e8bfc9e798b23bad|||||||||||||||
+df_covid_colombia_cases|stem|4220ee33ec0674d7|f4173319ad33587f|674ea0df95ed5d33|1649728559||t19968.6830352719s|7c5fbb034bf6666c|11551|rds|local|vector|||0.135||
+df_covid_colombia_cases_deaths|stem|f2b2eedc04f530f2|57f893b4e58ce006|084b6d7febf11470|-320094994||t19968.6883408398s|3c28cd410ed90ba7|14143|rds|local|vector|||0.252||
+df_covid_colombia_deaths|stem|08ef002caa936d62|94b4239dc425e1ce|7a50928d261eb72c|-770584222||t19968.6847843209s|b9d6cc1878bc104e|7635|rds|local|vector|||0.183||
+df_covid_large|stem|b4f653183ee2123c|898422e6584b187b|74703f9cccc2c949|-560810544||t19968.678919122s|1407002cbac507e3|3824265|rds|local|vector|||2.138||
+filename_covid_large|stem|a75839ad7be3afa3|fca6e1cda008a692|2c530c1562a7fbd1|-1698581571|data/raw/covid19_col_updated_individual.csv|t19968.6620182121s|b011ce94aa4930d8|80984155|file|local|vector|||0.201||
 get_colombia_covid_large_data|function|26b13016d80ea2ef|||||||||||||||
+join_mobility_data|function|d1540e9e96c2e567|||||||||||||||
+mobility_all_years|stem|bf923038fd857eac|34634a813819e593|a8bc909aa5a93f6d|-33542987||t19968.678219068s|b2c8768326344aba|8126|rds|local|vector|||1.144||
+plot_cases_deaths|stem|3a969ed836f291c6|cad41393278ff544|50fa711625f9ef1b|-1758041871||t19968.6883422669s|a7bad12742ffe636|234166|rds|local|vector|||0.037||
