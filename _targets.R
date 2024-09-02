@@ -9,7 +9,9 @@ library(targets)
 
 # Set target options:
 tar_option_set(
-  packages = c("tibble", "dplyr", "ggplot2",
+  packages = c("tibble",
+               "dplyr",
+               "ggplot2",
                "data.table",
                "stringi")
 )
@@ -21,9 +23,10 @@ tar_source("R/get_colombia_covid_data.R")
 list(
   tar_target(
     df_covid_large,
-    get_colombia_covid_large_data(
-      initial_date=as.Date("2020-01-01"),
-      final_date=as.Date("2021-12-31")
-    )
+    "data/raw/covid19_col_updated_individual.csv",
+    format = "file"
+  ),
+  tar_target(
+    mobility_all_years,
   )
 )
