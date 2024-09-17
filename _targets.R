@@ -16,7 +16,8 @@ tar_option_set(
                "stringi",
                "magrittr",
                "purrr",
-               "tidyr")
+               "tidyr",
+               "epidp")
 )
 
 # all functions used
@@ -42,7 +43,7 @@ list(
              create_death_incidence(df_covid_large)
   ),
   tar_target(df_covid_colombia_cases_deaths, {
-    df_covid_colombia_cases %>%
+    tmp <- df_covid_colombia_cases %>%
       rename(cases=n,
              date=onset) %>%
       left_join(
@@ -54,18 +55,45 @@ list(
         by = join_by(city, date)
       ) %>%
       mutate(
-        n_deaths=if_else(is.na(deaths), 0, deaths)
+        deaths=if_else(is.na(deaths), 0, deaths)
       ) %>%
       mutate(date=as.Date(date))
+
+    date_min <- min(tmp$date)
+    date_max <- max(tmp$date)
+    dates_sequence <- seq(date_min, date_max, by = "day")
+    cities <- unique(tmp$city)
+    complete_combinations <- crossing(date = dates_sequence, city = cities)
+
+    complete_combinations %>%
+      left_join(tmp, by = c("date", "city")) %>%
+      arrange(date, city) %>%
+      mutate(
+        deaths=if_else(is.na(deaths), 0, deaths),
+        cases=if_else(is.na(cases), 0, cases)
+      )
   }),
+  tar_target(
+    plot_cases_deaths_normalised,
+    df_covid_colombia_cases_deaths %>%
+      pivot_longer(c(cases, deaths)) %>%
+      group_by(name) %>%
+      mutate(
+        value=value / max(value, na.rm = TRUE)
+      ) %>%
+      ggplot(aes(x=date, y=value)) +
+      geom_line(aes(colour=name)) +
+      scale_colour_brewer("Series", palette="Dark2") +
+      facet_wrap(~city, scales="free")
+  ),
   tar_target(
     plot_cases_deaths,
     df_covid_colombia_cases_deaths %>%
       pivot_longer(c(cases, deaths)) %>%
       ggplot(aes(x=date, y=value)) +
-      geom_line(aes(colour=name)) +
-      scale_colour_brewer(palette="Dark2") +
-      facet_wrap(~city)
+      geom_line() +
+      facet_grid(vars(name), vars(city),
+                 scales="free")
   ),
 
 
@@ -77,5 +105,53 @@ list(
       filename2="data/raw/2021_CO_Region_Mobility_Report.csv",
       filename3="data/raw/2022_CO_Region_Mobility_Report.csv"
     )
-  )
+  ),
+  tar_target(df_mobility, {
+    mobility_all_years %>%
+      mutate(date=as.Date(date)) %>%
+      rename(city=name) %>%
+      select(
+        date,
+        city,
+        retail_and_recreation_percent_change_from_baseline:residential_percent_change_from_baseline
+      ) %>%
+      pivot_longer(-c(date, city)) %>%
+      mutate(
+        name=gsub("_percent_change_from_baseline", "", name)
+      ) %>%
+      mutate(name=case_when(
+        name=="grocery_and_pharmacy"~"grocery and\npharmacy",
+        name=="retail_and_recreation"~"retail and\nrecreation",
+        name=="transit_stations"~"transit\nstations",
+        TRUE~name
+      )) %>%
+      arrange(city, date) %>%
+      pivot_wider(names_from = name, values_from = value,
+                  id_cols=c(date, city))
+  }),
+
+  # overlay cases + deaths data with mobility measures
+  tar_target(df_covid_colombia_cases_deaths_mobility, {
+    df_covid_colombia_cases_deaths %>%
+      left_join(df_mobility, by=c("city", "date"))
+  }),
+  tar_target(plot_cases_mobility, {
+    df_covid_colombia_cases_deaths_mobility %>%
+      select(-deaths) %>%
+      pivot_longer(-c(date, city, cases)) %>%
+      group_by(city, name) %>%
+      mutate(value=max(cases)*(value - min(value)) / (max(value) - min(value))) %>%
+      ggplot(aes(x=date, y=value)) +
+      geom_line(aes(y=cases)) +
+      geom_line(aes(y=value), colour="orange") +
+      facet_grid(vars(name), vars(city), scales="free") +
+      theme(
+        strip.text.y = element_text(size=8)
+      ) +
+      ylab("Cases") +
+      xlab("Date")
+  }),
+
+  # estimate Rt from cases and deaths for each of the two cities
+
 )
