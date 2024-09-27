@@ -16,8 +16,7 @@ tar_option_set(
                "stringi",
                "magrittr",
                "purrr",
-               "tidyr",
-               "epidp")
+               "tidyr")
 )
 
 # all functions used
@@ -151,6 +150,22 @@ list(
       ylab("Cases") +
       xlab("Date")
   }),
+  tar_target(plot_deaths_mobility, {
+    df_covid_colombia_cases_deaths_mobility %>%
+      select(-cases) %>%
+      pivot_longer(-c(date, city, deaths)) %>%
+      group_by(city, name) %>%
+      mutate(value=max(deaths)*(value - min(value)) / (max(value) - min(value))) %>%
+      ggplot(aes(x=date, y=value)) +
+      geom_line(aes(y=deaths)) +
+      geom_line(aes(y=value), colour="orange") +
+      facet_grid(vars(name), vars(city), scales="free") +
+      theme(
+        strip.text.y = element_text(size=8)
+      ) +
+      ylab("Deaths") +
+      xlab("Date")
+  })
 
   # estimate Rt from cases and deaths for each of the two cities
 

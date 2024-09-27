@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|a890a4f3f2838f7d|||||||||||||||
+.Random.seed|object|e2f3a1a8e2efa4e5|||||||||||||||
 create_case_incidence|function|87792e4c9cd40b9b|||||||||||||||
 create_death_incidence|function|e8bfc9e798b23bad|||||||||||||||
 df_covid_colombia_cases|stem|4220ee33ec0674d7|f4173319ad33587f|674ea0df95ed5d33|1649728559||t19968.6830352719s|7c5fbb034bf6666c|11551|rds|local|vector|||0.135||
@@ -15,3 +15,4 @@ mobility_all_years|stem|56d1574b10791f24|34634a813819e593|b019ab20ff59516b|-3354
 plot_cases_deaths|stem|8eaae97f5263b8fd|d0efe8c04e892c03|50fa711625f9ef1b|-1758041871||t19983.6470003212s|f90c315fc44342f7|208513|rds|local|vector|||0.026||
 plot_cases_deaths_normalised|stem|9f140f8fc17b7d39|20e9c1b545a42c6c|3e6d876b2a68d6f7|-1661318515||t19983.6609472197s|9987367e905c77aa|219353|rds|local|vector|||0.018||
 plot_cases_mobility|stem|9fc121a24aaee4c5|63b903fb2e488675|e93af536f1b2ec68|-1016650227||t19983.6897515281s|293c39a55fd46164|346760|rds|local|vector|||0.071||
+plot_deaths_mobility|stem|3aacf5f93dbdaa0f|5e56b9879506c3e0|e93af536f1b2ec68|-984266712||t19983.7062905464s|e15f4365d98c6aee|325001|rds|local|vector|||0.076||
