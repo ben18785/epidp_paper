@@ -1,14 +1,18 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|e2f3a1a8e2efa4e5|||||||||||||||
+.Random.seed|object|93b94415321d9d4c|||||||||||||||
 create_case_incidence|function|87792e4c9cd40b9b|||||||||||||||
 create_death_incidence|function|e8bfc9e798b23bad|||||||||||||||
+df_covid_bogota_cases_deaths_mobility|stem|c948180014caa3a5|e500b3311be58257|e93af536f1b2ec68|26758937||t20021.6233048009s|6d3e5b764f42b0f8|9813|rds|local|vector|||0.004||
 df_covid_colombia_cases|stem|4220ee33ec0674d7|f4173319ad33587f|674ea0df95ed5d33|1649728559||t19968.6830352719s|7c5fbb034bf6666c|11551|rds|local|vector|||0.135||
 df_covid_colombia_cases_deaths|stem|653a514f75a00270|17bf51ebbac4a8cf|084b6d7febf11470|-320094994||t19983.660946389s|13770d22943fd2bf|7069|rds|local|vector|||0.178||
 df_covid_colombia_cases_deaths_mobility|stem|7525a9c0bfefb975|0d22ac3711dfb102|efb3604723a1d55c|-1482230338||t19983.6894489311s|571e5d971c7a7875|17295|rds|local|vector|||0.002||
 df_covid_colombia_deaths|stem|08ef002caa936d62|94b4239dc425e1ce|7a50928d261eb72c|-770584222||t19968.6847843209s|b9d6cc1878bc104e|7635|rds|local|vector|||0.183||
 df_covid_large|stem|b4f653183ee2123c|898422e6584b187b|74703f9cccc2c949|-560810544||t19968.678919122s|1407002cbac507e3|3824265|rds|local|vector|||2.138||
 df_mobility|stem|e3cd8a1d8ae18464|4d7e4c616ba1e104|4833f9971f37b4ac|93428683||t19983.6894481807s|6cfca889e2875c4c|16698|rds|local|vector|||0.034||
+df_transactions_bogota|stem|162a18ad5df4824d|5bdd54f3f4420e3b|2c530c1562a7fbd1|834902530||t20021.6495360091s|5c729b476276acb7|2426|rds|local|vector|||2.417||
 filename_covid_large|stem|a75839ad7be3afa3|fca6e1cda008a692|2c530c1562a7fbd1|-1698581571|data/raw/covid19_col_updated_individual.csv|t19968.6620182121s|b011ce94aa4930d8|80984155|file|local|vector|||0.201||
+fit_bogota_mobility|stem|0e538e47db230fff|c5afcdd1f59a45ee|a62f474564489d39|-1106971541||t20021.6463419622s|c3bb931bf87d7ecc|29758|rds|local|vector|||4.795||
+fit_bogota_no_covariates|stem|84d70dfaa22715b4|e8b9c78826d0eb80|a62f474564489d39|1468065820||t20021.6278465208s|1524e4a28792f78e|11844011|rds|local|vector|||209.474|The largest Rhat is NA, indicating chains have not mixed.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlrhat. Bulk Effective Samples Size ESS is too low, indicating posterior means and medians may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlbulkess. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
 get_colombia_covid_large_data|function|26b13016d80ea2ef|||||||||||||||
 join_mobility_data|function|9471facb6ba9f932|||||||||||||||
 mobility_all_years|stem|56d1574b10791f24|34634a813819e593|b019ab20ff59516b|-33542987||t19983.6755185343s|c86224abf9e4bbcf|19157|rds|local|vector|||0.773||
@@ -16,3 +20,4 @@ plot_cases_deaths|stem|8eaae97f5263b8fd|d0efe8c04e892c03|50fa711625f9ef1b|-17580
 plot_cases_deaths_normalised|stem|9f140f8fc17b7d39|20e9c1b545a42c6c|3e6d876b2a68d6f7|-1661318515||t19983.6609472197s|9987367e905c77aa|219353|rds|local|vector|||0.018||
 plot_cases_mobility|stem|9fc121a24aaee4c5|63b903fb2e488675|e93af536f1b2ec68|-1016650227||t19983.6897515281s|293c39a55fd46164|346760|rds|local|vector|||0.071||
 plot_deaths_mobility|stem|3aacf5f93dbdaa0f|5e56b9879506c3e0|e93af536f1b2ec68|-984266712||t19983.7062905464s|e15f4365d98c6aee|325001|rds|local|vector|||0.076||
+serial_interval_covid19|stem|60bf86d4cdec5cc9|4b1fc058c0cfcd0d|e664585646fed90c|-121020248||t20021.6233048415s|ab78dd2160f1066c|693|rds|local|vector|||0||

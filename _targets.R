@@ -16,7 +16,9 @@ tar_option_set(
                "stringi",
                "magrittr",
                "purrr",
-               "tidyr")
+               "tidyr",
+               "epidp"
+               )
 )
 
 # all functions used
@@ -165,8 +167,70 @@ list(
       ) +
       ylab("Deaths") +
       xlab("Date")
+  }),
+
+  # estimate Rt from cases and deaths for Bogota
+  tar_target(df_covid_bogota_cases_deaths_mobility, {
+    df_covid_colombia_cases_deaths_mobility %>%
+      filter(city == "Bogota")
+  }),
+  tar_target(serial_interval_covid19, {
+    # generate serial interval for COVID-19 based on reasonable mean, sd
+    mean_si <- 6.5
+    sd_si <- 4.03
+    w <- epidp::generate_vector_serial(nrow(df_covid_bogota_cases_deaths_mobility), mean_si, sd_si)
+    w
+  }),
+
+  ## no covariates
+  tar_target(fit_bogota_no_covariates, {
+    options(mc.cores=4)
+    fit_epifilter(
+      N = nrow(df_covid_bogota_cases_deaths_mobility),
+      C = df_covid_bogota_cases_deaths_mobility$cases,
+      w = serial_interval_covid19,
+      is_sampling = TRUE,
+      iter = 200,
+      chains = 4
+    )
+  }),
+
+  ## mobility
+  tar_target(fit_bogota_mobility, {
+
+    X <- tibble(
+      cons = rep(1, nrow(df_covid_bogota_cases_deaths_mobility)),
+      m = df_covid_bogota_cases_deaths_mobility$workplaces
+    ) %>%
+      mutate(
+        m = scale(m)[, 1]
+      ) %>%
+      as.matrix()
+
+    fit <- fit_epifilter_covariates(
+      N = nrow(df_covid_bogota_cases_deaths_mobility),
+      C = df_covid_bogota_cases_deaths_mobility$cases,
+      w = serial_interval_covid19,
+      X = X,
+      is_sampling = FALSE,
+      as_vector = FALSE
+    )
+  }),
+
+  ## combine with transactions data
+  tar_target(df_transactions_bogota, {
+    dates <- read.csv("data/raw/tdates.csv", header = FALSE)$V1
+    total_no_trans <- read.csv("data/raw/totNoTrans.csv", header = FALSE)$V1
+    total_spend <- read.csv("data/raw/totSpend.csv", header = FALSE)$V1
+    tibble(
+      date=dates,
+      transactions_count=total_no_trans,
+      transactions_spend=total_spend
+    )
+  }),
+  tar_target(df_covid_bogota_cases_deaths_mobility_transactions, {
+    -1
   })
 
-  # estimate Rt from cases and deaths for each of the two cities
 
 )
