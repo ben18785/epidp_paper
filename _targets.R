@@ -17,7 +17,8 @@ tar_option_set(
                "magrittr",
                "purrr",
                "tidyr",
-               "epidp"
+               "epidp",
+               "loo"
                )
 )
 
@@ -207,14 +208,69 @@ list(
       ) %>%
       as.matrix()
 
+    options(mc.cores=4)
     fit <- fit_epifilter_covariates(
       N = nrow(df_covid_bogota_cases_deaths_mobility),
       C = df_covid_bogota_cases_deaths_mobility$cases,
       w = serial_interval_covid19,
       X = X,
-      is_sampling = FALSE,
-      as_vector = FALSE
+      is_sampling = TRUE,
+      iter=200
     )
+  }),
+  tar_target(loo_compare_bogota, {
+
+    log_likelihood_no_covs <- rstan::extract(fit_bogota_no_covariates, "log_likelihood")[[1]]
+    log_likelihood_mobility <- rstan::extract(fit_bogota_mobility, "log_likelihood")[[1]]
+
+    loo_compare(
+      loo(log_likelihood_no_covs[, 2:ncol(log_likelihood_no_covs)]),
+      loo(log_likelihood_mobility[, 2:ncol(log_likelihood_mobility)])
+    )
+  }),
+  tar_target(plot_rt_comparison, {
+
+    r <- rstan::extract(fit_bogota_no_covariates, "R")[[1]]
+    lower <- apply(r, 2, function(x) quantile(x, 0.025))
+    upper <- apply(r, 2, function(x) quantile(x, 0.975))
+    middle <- apply(r, 2, function(x) quantile(x, 0.5))
+
+    dates <- df_covid_bogota_cases_deaths_mobility$date
+
+    df_no_covs <- data.frame(
+      lower,
+      middle,
+      upper
+    ) %>%
+      mutate(covariates="none") %>%
+      mutate(date=dates)
+
+    r <- rstan::extract(fit_bogota_mobility, "R")[[1]]
+    lower <- apply(r, 2, function(x) quantile(x, 0.025))
+    upper <- apply(r, 2, function(x) quantile(x, 0.975))
+    middle <- apply(r, 2, function(x) quantile(x, 0.5))
+
+    df_mobility <- data.frame(
+      lower,
+      middle,
+      upper
+    ) %>%
+      mutate(covariates="mobility") %>%
+      mutate(date=dates)
+
+    df_no_covs %>%
+      bind_rows(df_mobility) %>%
+      filter(date <= "2020-12-31") %>%
+      ggplot(aes(x=date, y=middle)) +
+      geom_ribbon(aes(ymin=lower, ymax=upper, fill=covariates),
+                  alpha=0.8) +
+      geom_line(aes(colour=covariates)) +
+      scale_fill_brewer("Covariates", palette = "Dark2") +
+      scale_colour_brewer("Covariates", palette = "Dark2") +
+      ylab("R_t") +
+      xlab("Date") +
+      geom_hline(yintercept = 1, linetype=2) +
+      scale_y_log10()
   }),
 
   ## combine with transactions data
@@ -227,6 +283,9 @@ list(
       transactions_count=total_no_trans,
       transactions_spend=total_spend
     )
+  }),
+  tar_target(df_transactions_bogota_interpolated, {
+    -1
   }),
   tar_target(df_covid_bogota_cases_deaths_mobility_transactions, {
     -1

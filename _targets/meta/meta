@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|93b94415321d9d4c|||||||||||||||
+.Random.seed|object|a997a778b72a462b|||||||||||||||
 create_case_incidence|function|87792e4c9cd40b9b|||||||||||||||
 create_death_incidence|function|e8bfc9e798b23bad|||||||||||||||
 df_covid_bogota_cases_deaths_mobility|stem|c948180014caa3a5|e500b3311be58257|e93af536f1b2ec68|26758937||t20021.6233048009s|6d3e5b764f42b0f8|9813|rds|local|vector|||0.004||
@@ -11,10 +11,11 @@ df_covid_large|stem|b4f653183ee2123c|898422e6584b187b|74703f9cccc2c949|-56081054
 df_mobility|stem|e3cd8a1d8ae18464|4d7e4c616ba1e104|4833f9971f37b4ac|93428683||t19983.6894481807s|6cfca889e2875c4c|16698|rds|local|vector|||0.034||
 df_transactions_bogota|stem|162a18ad5df4824d|5bdd54f3f4420e3b|2c530c1562a7fbd1|834902530||t20021.6495360091s|5c729b476276acb7|2426|rds|local|vector|||2.417||
 filename_covid_large|stem|a75839ad7be3afa3|fca6e1cda008a692|2c530c1562a7fbd1|-1698581571|data/raw/covid19_col_updated_individual.csv|t19968.6620182121s|b011ce94aa4930d8|80984155|file|local|vector|||0.201||
-fit_bogota_mobility|stem|0e538e47db230fff|c5afcdd1f59a45ee|a62f474564489d39|-1106971541||t20021.6463419622s|c3bb931bf87d7ecc|29758|rds|local|vector|||4.795||
+fit_bogota_mobility|stem|8e7be5b90a17dca3|047770e0d37c575e|a62f474564489d39|-1106971541||t20032.5938176895s|9c79dd9387a94a00|15555667|rds|local|vector|||433.315|The largest Rhat is NA, indicating chains have not mixed.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlrhat. Bulk Effective Samples Size ESS is too low, indicating posterior means and medians may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlbulkess. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
 fit_bogota_no_covariates|stem|84d70dfaa22715b4|e8b9c78826d0eb80|a62f474564489d39|1468065820||t20021.6278465208s|1524e4a28792f78e|11844011|rds|local|vector|||209.474|The largest Rhat is NA, indicating chains have not mixed.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlrhat. Bulk Effective Samples Size ESS is too low, indicating posterior means and medians may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlbulkess. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
 get_colombia_covid_large_data|function|26b13016d80ea2ef|||||||||||||||
 join_mobility_data|function|9471facb6ba9f932|||||||||||||||
+loo_compare_bogota|stem|cd489b04e2c730e9|a974437e3998aa8f|23209b463e040689|-144345840||t20032.5974613491s|4ddbed81b4b32c33|295|rds|local|vector|||0.483|Some Pareto k diagnostic values are too high. See helpparetokdiagnostic for details.. Some Pareto k diagnostic values are too high. See helpparetokdiagnostic for details.|
 mobility_all_years|stem|56d1574b10791f24|34634a813819e593|b019ab20ff59516b|-33542987||t19983.6755185343s|c86224abf9e4bbcf|19157|rds|local|vector|||0.773||
 plot_cases_deaths|stem|8eaae97f5263b8fd|d0efe8c04e892c03|50fa711625f9ef1b|-1758041871||t19983.6470003212s|f90c315fc44342f7|208513|rds|local|vector|||0.026||
 plot_cases_deaths_normalised|stem|9f140f8fc17b7d39|20e9c1b545a42c6c|3e6d876b2a68d6f7|-1661318515||t19983.6609472197s|9987367e905c77aa|219353|rds|local|vector|||0.018||
