@@ -323,16 +323,16 @@ list(
   # include open DP data
   tar_target(df_covid_bogota_cases_deaths_mobility_opendp_transactions, {
 
-    df <- read.csv("data/raw/dp_data.csv") %>%
-      mutate(date=as.Date(endofweek)) %>%
+    df <- read.csv("data/raw/dp_data_new.csv") %>%
+      mutate(date=as.Date(date)) %>%
       filter(
         date>=min(df_covid_bogota_cases_deaths_mobility$date),
         date<=max(df_covid_bogota_cases_deaths_mobility$date)
       )
 
     daily_dates <- seq(min(df$date), max(df$date), by = "day")
-    spendamountusd_interpolated <- approx(df$date, df$spendamountusd, xout = daily_dates)$y
-    countamountusd_interpolated <- approx(df$date, df$countamountusd, xout = daily_dates)$y
+    spendamountusd_interpolated <- approx(df$date, df$spendamt, xout = daily_dates)$y
+    countamountusd_interpolated <- approx(df$date, df$nb_transactions, xout = daily_dates)$y
 
     df_daily <- tibble(
       date=daily_dates,
