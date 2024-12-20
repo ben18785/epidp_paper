@@ -113,17 +113,20 @@ list(
     plot_cases_deaths,
     df_covid_colombia_cases_deaths %>%
       pivot_longer(c(cases, deaths)) %>%
+      filter(city == "Bogota") %>%
       ggplot(aes(x=date, y=value)) +
       geom_line() +
-      facet_grid(vars(name), vars(city),
-                 scales="free") +
+      facet_wrap(vars(name), scales="free") +
       xlab("Date") +
       theme_classic() +
+      theme(
+        text=element_text(size=20)
+      ) +
       ylab("")
   ),
   tar_target(file_plot_cases_deaths, {
     filename <- "outputs/plot_cases_deaths.pdf"
-    ggsave(filename, plot_cases_deaths, width = 8, height = 6);
+    ggsave(filename, plot_cases_deaths, width = 12, height = 6);
     filename
   }),
 
@@ -380,6 +383,7 @@ list(
           name=="spend_average", "avg. transaction", name
         )
       )) %>%
+      filter(mobility_category %in% c("parks", "workplaces", "residential")) %>%
       ggplot(aes(x=date, y=value)) +
       geom_line() +
       geom_line(aes(y=mobility_value), colour="orange") +

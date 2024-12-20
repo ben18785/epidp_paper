@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|931ff2ae513ad489|||||||||||||||
+.Random.seed|object|0c33234c38365c6e|||||||||||||||
 create_case_incidence|function|87792e4c9cd40b9b|||||||||||||||
 create_death_incidence|function|e8bfc9e798b23bad|||||||||||||||
 df_covid_bogota_cases_deaths_mobility|stem|c948180014caa3a5|e500b3311be58257|e93af536f1b2ec68|26758937||t20021.6233048009s|6d3e5b764f42b0f8|9813|rds|local|vector|||0.004||
@@ -12,8 +12,8 @@ df_covid_large|stem|b4f653183ee2123c|898422e6584b187b|74703f9cccc2c949|-56081054
 df_mobility|stem|e3cd8a1d8ae18464|4d7e4c616ba1e104|4833f9971f37b4ac|93428683||t19983.6894481807s|6cfca889e2875c4c|16698|rds|local|vector|||0.034||
 df_transactions_bogota|stem|162a18ad5df4824d|5bdd54f3f4420e3b|2c530c1562a7fbd1|834902530||t20021.6495360091s|5c729b476276acb7|2426|rds|local|vector|||2.417||
 f_extract_posterior_r_quantiles|function|fc558586bd620ef6|||||||||||||||
-file_plot_cases_deaths|stem|78e93e7c535be0eb|d92b98cae0b2c3ca|a1e0af5d7c039acb|-729559810||t20035.7117855354s|edb5491f686fb474|82|rds|local|vector|||0.158||
-file_plot_opendp_transactions_mobility|stem|cd90979dc33091a7|70b7b0aa5f929d66|de7a3dbc65c9b6a3|-1384795374||t20041.6056533999s|0968ba2c0c5b836c|98|rds|local|vector|||0.528||
+file_plot_cases_deaths|stem|78e93e7c535be0eb|9394c951895e1e50|18f465bac10c5c68|-729559810||t20041.8802803844s|edb5491f686fb474|82|rds|local|vector|||0.137||
+file_plot_opendp_transactions_mobility|stem|cd90979dc33091a7|70b7b0aa5f929d66|7885634e93e5e301|-1384795374||t20041.874599183s|0968ba2c0c5b836c|98|rds|local|vector|||0.211||
 file_plot_rt_comparison_opendp_both|stem|6807d0bd0d9f38b4|e1a02e840dbbbdc3|044021231c32279f|531225598||t20035.7194780792s|3a092808d479a224|95|rds|local|vector|||0.325||
 filename_covid_large|stem|a75839ad7be3afa3|fca6e1cda008a692|2c530c1562a7fbd1|-1698581571|data/raw/covid19_col_updated_individual.csv|t19968.6620182121s|b011ce94aa4930d8|80984155|file|local|vector|||0.201||
 fit_bogota_mobility|stem|8e7be5b90a17dca3|047770e0d37c575e|a62f474564489d39|-1106971541||t20032.5938176895s|9c79dd9387a94a00|15555667|rds|local|vector|||433.315|The largest Rhat is NA, indicating chains have not mixed.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlrhat. Bulk Effective Samples Size ESS is too low, indicating posterior means and medians may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlbulkess. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
@@ -30,13 +30,13 @@ join_mobility_data|function|9471facb6ba9f932|||||||||||||||
 loo_compare_bogota|stem|cd489b04e2c730e9|a974437e3998aa8f|23209b463e040689|-144345840||t20032.5974613491s|4ddbed81b4b32c33|295|rds|local|vector|||0.483|Some Pareto k diagnostic values are too high. See helpparetokdiagnostic for details.. Some Pareto k diagnostic values are too high. See helpparetokdiagnostic for details.|
 loo_compare_opendp|stem|1475bb9f0548cab9|5b530f9d06ca4370|cd81a6fb30cbcaaf|665496888||t20041.6274977884s|ea1d32cbd7b30853|481|rds|local|vector|||0.549|Some Pareto k diagnostic values are too high. See helpparetokdiagnostic for details.. Some Pareto k diagnostic values are too high. See helpparetokdiagnostic for details.. Some Pareto k diagnostic values are too high. See helpparetokdiagnostic for details.. Some Pareto k diagnostic values are too high. See helpparetokdiagnostic for details.. Some Pareto k diagnostic values are too high. See helpparetokdiagnostic for details.|
 mobility_all_years|stem|56d1574b10791f24|34634a813819e593|b019ab20ff59516b|-33542987||t19983.6755185343s|c86224abf9e4bbcf|19157|rds|local|vector|||0.773||
-plot_cases_deaths|stem|300a1f5024b6f824|54a56b43c86dfe8e|3e6d876b2a68d6f7|-1758041871||t20035.711783665s|7fe9857a682c376b|151531|rds|local|vector|||0.018||
+plot_cases_deaths|stem|5df28bb62d645d17|4340ea136def58e8|3e6d876b2a68d6f7|-1758041871||t20041.880278759s|eacff06cb68a0b35|137877|rds|local|vector|||0.018||
 plot_cases_deaths_normalised|stem|9f140f8fc17b7d39|20e9c1b545a42c6c|3e6d876b2a68d6f7|-1661318515||t19983.6609472197s|9987367e905c77aa|219353|rds|local|vector|||0.018||
 plot_cases_mobility|stem|9fc121a24aaee4c5|63b903fb2e488675|e93af536f1b2ec68|-1016650227||t19983.6897515281s|293c39a55fd46164|346760|rds|local|vector|||0.071||
 plot_cases_opendp_transactions_mobility|stem|5d7767d80b98ccbe|fbe2b89c97892db0|36cabfaa1826188f|1195321787||t20034.6427627731s|aa2fb2b5f401d140|280234|rds|local|vector|||0.026||
 plot_correlations|stem|f90481760cee0951|2a8a2852cee9ff0b|5d7dca0dd33bb4ea|937255680||t20034.6609835888s|b27fc1dd7fa9c438|913|rds|local|vector|||0.027||
 plot_deaths_mobility|stem|3aacf5f93dbdaa0f|5e56b9879506c3e0|e93af536f1b2ec68|-984266712||t19983.7062905464s|e15f4365d98c6aee|325001|rds|local|vector|||0.076||
-plot_opendp_transactions_mobility|stem|ad342ba24b32d9fd|85c34a47d046fe7f|ad857e829fdb6f9c|1550724253||t20041.6051247939s|002b1048bb857e37|333149|rds|local|vector|||0.028||
+plot_opendp_transactions_mobility|stem|8692f52a47d9f7ad|cee8c23d3afc536c|ad857e829fdb6f9c|1550724253||t20041.8745966967s|d8adfe1c923ce35d|285103|rds|local|vector|||0.03||
 plot_rt_comparison_opendp|stem|8f99b9e19b80fdeb|c0feadaec8b8be6f|f903a1f3cf7c6d2a|945378647||t20035.7194263767s|240e76a5c4e60d05|37321933|rds|local|vector|||0.166||
 plot_rt_comparison_opendp_both|stem|f85dc4daed3d264f|fb7dcc8c701b813f|1640aac77e27ef3e|-1089522995||t20035.7194738333s|d2b87bb0434337fb|72798741|rds|local|vector|||0.002||
 plot_rt_comparison_opendp_mobility|stem|b56caa2c4a2b2000|d6e80e720a5bdcc4|1a9c733cb7ce3e53|-2121224789||t20041.647968694s|4580415e6040f330|72638307|rds|local|vector|||0.509|A numeric legend.position argument in theme was deprecated in ggplot23.5.0.ℹ Please use the legend.position.inside argument of theme instead.|
