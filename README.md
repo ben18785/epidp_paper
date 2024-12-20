@@ -33,4 +33,7 @@ tar_visnetwork(targets_only=TRUE)
 #> - The project is out-of-sync -- use `renv::status()` for details.
 ```
 
+## Example script for producing DP time series
+In [this R script](R/create_DP_data.R) we provide code for producing a DP time series from example financial data; note that we cannot provide such financial data since this is itself private.
+
 ![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
